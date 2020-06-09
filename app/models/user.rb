@@ -34,19 +34,20 @@ class User < ApplicationRecord
   end                  
   
   def follow(target_user)
-    outward_follows.create!(followed_id: target_user.id)
+    return if followed?(target_user)
+    followed_users << target_user
   end
   
   def unfollow(target_user)
-    outward_follows.find_by(followed_id: target_user.id).destroy!
+    followed_users.delete(target_user)
   end
   
-  def followed?(user)
-    following_users.include?(user)
+  def followed?(target_user)
+    followed_users.include?(target_user)
   end
 
-  def following?(user)
-    followed_users.include?(user)
+  def following?(target_user)
+    followed_users.include?(target_user)
   end
 
   def follow_count

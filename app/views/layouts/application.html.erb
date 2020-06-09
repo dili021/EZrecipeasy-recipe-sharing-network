@@ -11,28 +11,38 @@
   </head>
 
   <body>
-  <%# sidebar %>
-  <div class="container bg-yellow-400">
-    <% if user_logged_in? %>
-      <%= link_to "Home", :root %>
-      <%= link_to "Profile", current_user %>
-      <%= link_to "Log out", logout_path, method: :delete %>
-    <% else %>
-      <%#= link_to "Log In", login_path%>
-    <% end %>
-  </div>
-    
-    
-  <% flash.each do |message_type, message| %>
-    <p class="text-red-600">
-      <%= message %>
-    </p>
-  <% end %>
-
-
-    <%= yield %>
-    <div class=" absolute p-10 bottom-0 justify-center mt-10 bg-blue-200">
-    <%= debug(params) if Rails.env.development?%>
+    <div class="wrapper flex">
+    <%# sidebar %>
+      <div class="flex flex-col text-gray-600 w-1/5  h-screen bg-gray-700">
+      <div class="user-profile flex flex-col h-32">
+        <div class="gravatar text-2xl bg-gray-800 p-3 justify-around items-center flex">
+          <img src="https://picsum.photos/seed/picsum/64" 
+               alt="picsum" 
+               class="rounded-full ">
+          <%= current_user.full_name %>
+        </div>
+        <div class="follows text-gray-400 flex mt-4 justify-around">
+          <p>Followers: <%= current_user.follower_count %></p>
+          <p>Following: <%= current_user.follow_count %></p>
+        </div>
+      </div>
+        <% if user_logged_in? %>
+          <div class="flex justify-between mt-3 uppercase">
+            <%= link_to "Home", :root, class: "p-2" %>
+            <%= link_to "Profile", current_user, class: "p-2" %>
+            <%= link_to "Log out", logout_path, method: :delete, class: "p-2" %>
+          </div>
+        <% else %>
+          <%#= link_to "Log In", login_path%>
+        <% end %>
+      </div>
+      
+      <% flash.each do |message_type, message| %>
+        <p class="text-red-600">
+          <%= message %>
+        </p>
+      <% end %>
+      <%= yield %>      
     </div>
   </body>
 </html>

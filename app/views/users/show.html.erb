@@ -10,6 +10,8 @@
   <p>
     Followers: <%= @user.follower_count %>
   </p>
-  <%= link_to "Follow", follows_path(id: @user.id),
-                        method: :post %>
+
+  <button class="px-3 py-2 justify-center rounded bg-blue-500 hover:bg-blue-700 text-white">
+    <%= follow_actions(@user) %>
+  </button>
 </div>
