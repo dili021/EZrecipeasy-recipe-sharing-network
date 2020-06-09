@@ -1,2 +1,9 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+
+  <%= f.label :username, placeholder: "username", hidden: true%>
+  <%= f.text_field :username, autofocus: true%>
+  
+  <%= f.submit "Login" %>
+<% end %>
+
+<p>Don't have an account? <%= link_to "Sign up now!", sign_up_path %> </p>

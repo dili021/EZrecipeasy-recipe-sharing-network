@@ -1,0 +1,17 @@
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= render 'shared/errors'%>
+  
+  <%= f.label :username, hidden: true %>
+  <%= f.text_field :username, autofocus: true,
+                              placeholder: 'username'%>
+  
+  <%= f.label :full_name, hidden: true %>
+  <%= f.text_field :full_name, autofocus: true,
+                              placeholder: 'full name'%>
+  
+  <%= f.label :email, hidden: true %>
+  <%= f.email_field :email, autofocus: true,
+                              placeholder: 'email'%>
+  
+  <%= f.submit "Create Account"%>
+<% end %>
