@@ -8,6 +8,11 @@ module SessionsHelper
       @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def authenticate_user
+    return if user_logged_in?
+    redirect_to login_path
+  end
+
   def user_logged_in?
     !current_user.nil?
   end

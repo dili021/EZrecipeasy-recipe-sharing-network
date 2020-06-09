@@ -28,7 +28,25 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: {case_sensitive: false}
-  # has_secure_password
   
-  
+  def followed?(user)
+    following_users.include?(user)
+  end
+
+  def following?(user)
+    followed_users.include?(user)
+  end
+
+  def follow_count
+    following_users.count
+  end
+
+  def follower_count
+    followed_users.count
+  end
+
+  def post_count
+    posts.count
+  end
+
 end

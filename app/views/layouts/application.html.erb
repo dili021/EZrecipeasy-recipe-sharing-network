@@ -14,6 +14,7 @@
   <%# sidebar %>
   <div class="container bg-yellow-400">
     <% if user_logged_in? %>
+      <%= link_to "Home", :root %>
       <%= link_to "Profile", current_user %>
       <%= link_to "Log out", logout_path, method: :delete %>
     <% else %>
@@ -22,8 +23,13 @@
   </div>
     
     
-  
-  <p class="text-red-600"><%= notice %></p>
+  <% flash.each do |message_type, message| %>
+    <p class="text-red-600">
+      <%= message %>
+    </p>
+  <% end %>
+
+
     <%= yield %>
     <div class=" absolute p-10 bottom-0 justify-center mt-10 bg-blue-200">
     <%= debug(params) if Rails.env.development?%>
