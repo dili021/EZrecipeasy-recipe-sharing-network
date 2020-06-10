@@ -1,9 +1,11 @@
-<div class=" posts-container w-auto m-0 flex flex-col">
+<div class=" posts-container m-0 flex flex-col">
 <%# New Post %>
   <%= form_with(model: @post, local: true,
                               class: "flex text-center 
                                       text-blue-500 
-                                      flex-col m-5") do |f| %>
+                                      flex-col m-5
+                                      w-5/6 mx-auto
+                                      shadow-xl") do |f| %>
     
     <%= f.label :body, hidden: true %>
     <%= f.text_area :body, placeholder: "What's on your mind?",
@@ -13,12 +15,12 @@
   <% end %>
 
 <%# Timeline %>
-  <div class="flex flex-col">
+  <div class="flex w-4/5 mx-auto flex-col">
     <%= render 'shared/timeline'%>
   </div>
 </div>
 <%# Who to follow sidebar %>
-<div class="flex px-12 py-4 bg-gray-200">
+<div class="flex px-12 w-auto py-4 bg-gray-200">
   <div class="flex-col items-center right-sidebar">
     <%= render 'shared/who_to_follow'%> 
   </div>
