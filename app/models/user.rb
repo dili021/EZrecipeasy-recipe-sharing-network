@@ -2,20 +2,20 @@ class User < ApplicationRecord
   before_save { self.full_name = full_name.titleize}
   before_save {self.email = email.downcase}
 
-  VALID_IMAGE_REGEX = /\.(jpe?g|jpg|png)$/i
+  VALID_IMAGE_REGEX = /\.(jpe?g|jpg|png)$/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   has_one_attached :photo
   has_one_attached :cover_image
   
 
-  validates :photo, format: { with: VALID_IMAGE_REGEX,
-                              multiline: true },
-                              allow_nil: true
+  # validates :photo, format: { with: VALID_IMAGE_REGEX,
+  #                             multiline: true },
+  #                             allow_nil: true
 
-  validates :cover_image, format: { with: VALID_IMAGE_REGEX,
-                              multiline: true },
-                              allow_nil: true
+  # validates :cover_image, format: { with: VALID_IMAGE_REGEX,
+  #                             multiline: true },
+  #                             allow_nil: true
 
   has_many :posts, dependent: :destroy
   

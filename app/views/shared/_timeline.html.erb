@@ -1,5 +1,5 @@
 <% @timeline.each do |post| %>
-    <div class=" m-5 shadow-lg bg-gray-100 p-10">
+    <div class=" m-5 shadow-lg rounded-lg hover:shadow-xl bg-gray-100 p-10">
       <small> <%= post.user.username %> </small>
       <p class="text-lg"> <%= post.body %> </p>
     </div>
