@@ -1,15 +1,25 @@
+<div class=" posts-container w-1/2 m-0 flex flex-col">
 <%# New Post %>
-<%= form_with(model: @post, local: true) do |f| %>
-  <%= f.label :body, hidden: true %>
-  <%= f.text_area :body, placeholder: "What's on your mind?" %>
-  <%= f.submit 'Post' %>
-<% end %>
+  <%= form_with(model: @post, local: true,
+                              class: "flex text-center 
+                                      text-blue-500 
+                                      flex-col m-5") do |f| %>
+    
+    <%= f.label :body, hidden: true %>
+    <%= f.text_area :body, placeholder: "What's on your mind?",
+                           class: "bg-gray-100 rounded-lg p-10 text-2xl text-center" %>
+    
+    <%= f.submit 'Post', class: "px-3 py-2 justify-center shadow-lg rounded bg-blue-500 hover:bg-blue-700 text-white" %>
+  <% end %>
 
 <%# Timeline %>
-<% @timeline.each do |post| %>
-<div class="container m-3 p-3 w-15 bg-yellow-500">
-  <p class="text-lg"> <%= post.body %> </p>
-  <small> <%= post.user.username %> </small>
+  <div class="flex flex-col">
+    <%= render 'shared/timeline'%>
+  </div>
 </div>
-<% end %>
-<%= render 'shared/right_sidebar'%>
+<%# Who to follow sidebar %>
+<div class="flex px-12 py-4 bg-gray-200">
+  <div class="flex-col items-center right-sidebar">
+    <%= render 'shared/who_to_follow'%> 
+  </div>
+</div>

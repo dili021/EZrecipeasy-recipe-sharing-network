@@ -1,17 +1,28 @@
-<%= form_with(model: @user, local: true) do |f| %>
-  <%= render 'shared/errors'%>
-  
-  <%= f.label :username, hidden: true %>
-  <%= f.text_field :username, autofocus: true,
-                              placeholder: 'username'%>
-  
-  <%= f.label :full_name, hidden: true %>
-  <%= f.text_field :full_name, autofocus: true,
-                              placeholder: 'full name'%>
-  
-  <%= f.label :email, hidden: true %>
-  <%= f.email_field :email, autofocus: true,
-                              placeholder: 'email'%>
-  
-  <%= f.submit "Create Account"%>
-<% end %>
+<div class="form bg-white shadow-lg rounded-lg mx-auto my-20 text-center items-center justify-center flex flex-col h-64 w-64">
+
+  <%= form_with(model: @user, local: true, class: "flex flex-col") do |f| %>
+    
+    
+    <%= f.label :username, hidden: true %>
+    <%= f.text_field :username, 
+                      autofocus: true,
+                      placeholder: 'username',
+                      class: "my-3 shadow-lg"%>
+    
+    <%= f.label :full_name, hidden: true %>
+    <%= f.text_field :full_name, 
+                      autofocus: true,
+                      placeholder: 'full name',
+                      class: "my-3 shadow-lg"%>
+    
+    <%= f.label :email, hidden: true %>
+    <%= f.email_field :email, 
+                      autofocus: true,
+                      placeholder: 'email',
+                      class: "my-3 shadow-lg"%>
+    
+    <%= f.submit "Create Account", class: "bg-blue-300 p-3 w-auto shadow-lg rounded hover:bg-blue-500"%>
+  <% end %>
+  <%= link_to "Log In", login_path, class: "font-bold text-green-700" %> 
+<%= notice%>
+</div>

@@ -1,6 +1,7 @@
 <% @timeline.each do |post| %>
-<div class="container w20 bg-yellow-500">
-  <p> <%= post.body %> </p>
-</div>
+    <div class=" m-5 shadow-lg bg-gray-100 p-10">
+      <small> <%= post.user.username %> </small>
+      <p class="text-lg"> <%= post.body %> </p>
+    </div>
 <% end %>
 

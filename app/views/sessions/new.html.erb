@@ -1,9 +1,22 @@
-<%= form_with(url: login_path, scope: :session, local: true) do |f| %>
 
-  <%= f.label :username, placeholder: "username", hidden: true%>
-  <%= f.text_field :username, autofocus: true%>
-  
-  <%= f.submit "Login" %>
-<% end %>
+  <div class="form bg-white mx-auto my-20 rounded-lg shadow-lg text-center items-center justify-center flex flex-col h-64 w-64">
+    <%= form_with(url: login_path, 
+                  scope: :session, 
+                  local: true,
+                  class: "flex flex-col") do |f| %>
 
-<p>Don't have an account? <%= link_to "Sign up now!", sign_up_path %> </p>
+      <%= f.label :username, 
+                   placeholder: "username", 
+                   hidden: true%>
+      <%= f.text_field :username, 
+                        autofocus: true, 
+                        placeholder: "Username",
+                        class: "my-3 shadow-lg"%>
+      
+      <%= f.submit "Log In", class: "bg-blue-300 p-3 shadow-lg w-auto rounded hover:bg-blue-500" %>
+    <% end %>
+<p class="mt-4">Don't have an account? <br> 
+  <%= link_to "Sign up now!", sign_up_path, class: "font-bold text-green-700" %> 
+</p>
+<p class="text-red-600"><%= notice %></p>
+  </div>

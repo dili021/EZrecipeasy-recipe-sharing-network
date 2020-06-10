@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user
 
   def index
+    @user = current_user
     @post = Post.new
     @timeline = Post.all.order("created_at DESC")
     @people = User.other_users(current_user)

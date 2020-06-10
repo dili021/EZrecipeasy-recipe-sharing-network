@@ -1,10 +1,10 @@
+<h3 class="text-gray-500 p-3 border-b-2 mb-4 border-gray-400 uppercase ">Who to follow</h3>
 <% @people.each do |person| %>
-  <div class="person-box bg-white flex px-10 py-3 items-center justify-between">
+  <div class="person-box hover:shadow-2xl text-gray-600 shadow-lg w-full rounded-lg flex px-10 m-3 h-24 py-3 items-center justify-between">
     <% if person.photo.attached? %>
-              <%= image_tag(current_user.photo, class: "w-20 rounded-full") %>
-          <% end %>
-    <p class="mx-4"><%= person.full_name%></p>
-    <%= follow_actions(person) %>
+      <%= image_tag(person.photo, class: "w-16 rounded-full") %>
+    <% end %>
+    <%= link_to person.full_name, user_path(person) %></p>
   </div>
 <% end %>
 

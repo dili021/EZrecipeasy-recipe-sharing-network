@@ -2,8 +2,20 @@ class User < ApplicationRecord
   before_save { self.full_name = full_name.titleize}
   before_save {self.email = email.downcase}
 
+  VALID_IMAGE_REGEX = /\.(jpe?g|jpg|png)$/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
   has_one_attached :photo
   has_one_attached :cover_image
+  
+
+  validates :photo, format: { with: VALID_IMAGE_REGEX,
+                              multiline: true },
+                              allow_nil: true
+
+  validates :cover_image, format: { with: VALID_IMAGE_REGEX,
+                              multiline: true },
+                              allow_nil: true
 
   has_many :posts, dependent: :destroy
   
@@ -27,11 +39,13 @@ class User < ApplicationRecord
   validates :full_name, presence: true, 
                         length: {minimum: 4, maximum: 200}
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: {case_sensitive: false}
+ 
   scope :other_users, ->(user) { where.not(id: user)}
+
+  # @profile_pic = 'https'
 
   def post_count
     posts.count
@@ -51,11 +65,11 @@ class User < ApplicationRecord
   end
 
   def following?(target_user)
-    followed_users.include?(target_user)
+    following_users.include?(target_user)
   end
 
   def follow_count
-    outward_follows.count
+    followed_users.count
   end
 
   def follower_count
