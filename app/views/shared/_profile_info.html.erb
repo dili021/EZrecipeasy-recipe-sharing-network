@@ -1,0 +1,23 @@
+<div class="img-and-name mb-3">
+      <% if @user.photo.attached? %>
+        <%= image_tag(@user.photo, class: "w-56 rounded-full") %>
+      <% end %> 
+      <p class="font-bold text-center p-3">
+        <%= @user.full_name %> <br>
+        <small class="text-gray-700"><%= @user.username %></small>
+      </p>
+    </div>
+    <div class="info text-center justify-between flex">
+      <p>
+         <%= @user.post_count %> <br> Posts
+      </p>
+      <p>
+         <%= @user.follow_count %> <br> Following
+      </p>
+      <p>
+         <%= @user.follower_count %> <br> Followers
+      </p>
+    </div>
+    <div class="button flex justify-center">
+      <%= follow_actions(@user) %>
+    </div>

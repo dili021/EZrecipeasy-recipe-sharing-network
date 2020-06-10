@@ -2,6 +2,9 @@ class User < ApplicationRecord
   before_save { self.full_name = full_name.titleize}
   before_save {self.email = email.downcase}
 
+  has_one_attached :photo
+  has_one_attached :cover_image
+
   has_many :posts, dependent: :destroy
   
   has_many :outward_follows, class_name: "Following", 
@@ -28,7 +31,8 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: {case_sensitive: false}
-  
+  scope :other_users, ->(user) { where.not(id: user)}
+
   def post_count
     posts.count
   end                  
@@ -56,8 +60,6 @@ class User < ApplicationRecord
 
   def follower_count
     following_users.count
-  end
-
-  
+  end  
 
 end

@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @timeline = @user.posts.all.order("created_at DESC")
   end
 
   def create
@@ -18,9 +19,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    current_user.update(update_params)
+    # @user.photo.attach(params[:photo])
+    # current_user.cover_image.attach(params[:cover_image])
+    redirect_to current_user
+  end
+
   private 
   
   def user_params
     params.require(:user).permit(:username, :email, :full_name)
+  end
+
+  def update_params
+    params.require(:user).permit(:photo, :cover_image)
   end
 end

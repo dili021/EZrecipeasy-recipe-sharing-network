@@ -1,17 +1,4 @@
-<%# Right Sidebar %>
-<div class="container bg-gray-400">
-  <p>
-    <%= @user.full_name %> <br>
-    <small class="text-blue-500"><%= @user.username %></small>
-  </p>
-  <p>
-    Following: <%= @user.follow_count %>
-  </p>
-  <p>
-    Followers: <%= @user.follower_count %>
-  </p>
-
-  <button class="px-3 py-2 justify-center rounded bg-blue-500 hover:bg-blue-700 text-white">
-    <%= follow_actions(@user) %>
-  </button>
+<div class="justify-between w-screen flex">
+<%= render 'shared/timeline'%>
+<%= render 'shared/right_sidebar'%>
 </div>

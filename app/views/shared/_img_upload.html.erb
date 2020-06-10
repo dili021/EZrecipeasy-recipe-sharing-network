@@ -1,0 +1,11 @@
+
+<%= form_with(model: current_user) do |f| %>
+  
+  <%= f.label :photo %>
+      <%= f.file_field :photo, hidden: true %>
+    
+  <br><br>
+  <%= f.label :cover_image %>
+  <%= f.file_field :cover_image, hidden: true %>
+    <%= f.submit 'Upload', class: "rounded text-sm p-1"%>
+<% end %>
