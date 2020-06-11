@@ -1,5 +1,5 @@
 <% @timeline.each do |post| %>
-    <div class=" m-5 shadow-lg rounded-lg hover:shadow-xl bg-gray-100 flex p-4">
+    <div class=" m-5 shadow-lg rounded-lg hover:shadow-2xl bg-gray-100 flex p-4">
       <div class="img-box w-24 h-32">
         <% if post.user.photo.attached? %>
           <%= image_tag(post.user.photo, class: "rounded-full mx-auto h-20 w-20")%>

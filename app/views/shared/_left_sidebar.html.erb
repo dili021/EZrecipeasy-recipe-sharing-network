@@ -1,19 +1,19 @@
 <% if user_logged_in? %>
-<div class="flex flex-col text-gray-700 w-1/6  h-screen sticky top-0 bg-gray-800">
+<div class="flex flex-col text-gray-700 w-1/6 h-screen sticky top-0 bg-gray-800">
   <div class="user-profile flex-col justify-around flex h-56 bg-gray-900  h-32">
     <div class="avatar text-2xl px-3 py-2 justify-between items-center flex">
       <% if current_user.photo.attached? %>
-        <%= image_tag(current_user.photo, class: "w-20 rounded-full") %>
+        <%= image_tag(current_user.photo, class: "w-12 rounded-full") %>
       <% end %>
-        <span class="p-1 text-base font-bold uppercase text-justify"><%= current_user.full_name %></span>
+        <span class="p-1 text-base font-bold text-gray-600 uppercase text-justify"><%= current_user.full_name %></span>
 
     </div>
-    <div class="follows text-sm text-center text-lg text-gray-200 flex mt-4 justify-around">
-      <p class="m-2 text-base font-bold"><%= current_user.follower_count %> <br> <span class="font-normal text-gray-500">Followers</span></p>
-      <p class="m-2 text-base font-bold"><%= current_user.follow_count %> <br> <span class="font-normal text-gray-500">Following</span></p>
+    <div class="follows text-sm text-center text-gray-200 flex mt-4 justify-around">
+      <p class="m-2 text-xl leading-none font-bold"><%= current_user.follower_count %> <br> <span class="font-bold text-base text-gray-600">Followers</span></p>
+      <p class="m-2 text-xl leading-none font-bold"><%= current_user.follow_count %> <br> <span class="font-bold text-base text-gray-600">Following</span></p>
     </div>
   </div>
-      <div class="flex flex-col items-start justify-between h-48 font-bold mt-5 uppercase">
+      <div class="flex flex-col text-justify items-start justify-between h-48 font-bold mt-5 uppercase">
         <%= link_to "Home", :root, class: "p-5" %>
         <%= link_to "Profile", current_user, class: "p-5" %>
         <%= link_to "Log out", logout_path, method: :delete, class: "p-5" %>

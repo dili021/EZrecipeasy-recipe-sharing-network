@@ -8,14 +8,9 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_one_attached :cover_image
   
-
-  # validates :photo, format: { with: VALID_IMAGE_REGEX,
-  #                             multiline: true },
-  #                             allow_nil: true
-
-  # validates :cover_image, format: { with: VALID_IMAGE_REGEX,
-  #                             multiline: true },
-  #                             allow_nil: true
+  validates :photo, content_type: [:png, :jpg, :jpeg]
+  validates :cover_image, content_type: [:png, :jpg, :jpeg]
+                     
 
   has_many :posts, dependent: :destroy
   
@@ -43,9 +38,15 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: {case_sensitive: false}
  
-  scope :other_users, ->(user) { where.not(id: user)}
+  scope :other_users,        ->(user) { where.not(id: user.id)}
+  scope :not_followed_users, -> { where.not(follower_id: user.id)}
 
-  # @profile_pic = 'https'
+  def my_timeline
+    followed_user_ids = "SELECT followed_id FROM followings
+                         WHERE follower_id = user_id"
+    Post.where("user_id IN (#{followed_user_ids})
+               OR user_id = :user_id", user_id: id)
+  end
 
   def post_count
     posts.count
@@ -74,6 +75,6 @@ class User < ApplicationRecord
 
   def follower_count
     following_users.count
-  end  
+  end
 
 end

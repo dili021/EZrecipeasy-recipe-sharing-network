@@ -1,6 +1,6 @@
 <div class=" flex w-full justify-between flex-col">
 <% if @user.cover_image.attached? %>
-  <%= image_tag(@user.cover_image, class: "h-56") %>
+  <%= image_tag(@user.cover_image, class: "h-56 object-cover shadow-xl mb-4") %>
   <% end %>
   <div class="w-4/5 mx-auto">
   <%= render 'shared/timeline'%>

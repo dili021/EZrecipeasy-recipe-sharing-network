@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     @user = current_user
     @post = Post.new
-    @timeline = Post.all.order("created_at DESC")
+    @timeline = current_user.my_timeline
     @people = User.other_users(current_user)
   end
 

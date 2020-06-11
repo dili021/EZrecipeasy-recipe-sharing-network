@@ -1,10 +1,18 @@
-<h3 class="text-gray-500 p-3 border-b-2 mb-4 border-gray-400 uppercase ">Who to follow</h3>
+<h3 class="text-gray-500 p-3 border-b-2 mb-10 border-gray-400 uppercase ">
+  Who to follow
+</h3>
 <% @people.each do |person| %>
-  <div class="person-box hover:shadow-2xl text-gray-600 shadow-lg w-full rounded-lg flex px-10 m-3 h-24 py-3 items-center justify-between">
-    <% if person.photo.attached? %>
-      <%= image_tag(person.photo, class: "w-16 rounded-full") %>
-    <% end %>
-    <%= link_to person.full_name, user_path(person) %></p>
-  </div>
+  <%= link_to user_path(person) do %>
+    <div class="person-box hover:shadow-2xl w-full text-gray-700 
+                font-bold shadow-lg rounded-lg flex px-10 py-3 m-3 
+                h-24  items-center justify-center">
+      <div class="img-box w-32">
+        <% if person.photo.attached? %>
+          <%= image_tag(person.photo, class: "w-16 rounded-full") %>
+        <% end %>
+      </div>
+        <%= person.full_name %>
+    </div>
+  <% end %>  
 <% end %>
 
