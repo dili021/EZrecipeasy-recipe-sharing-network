@@ -15,10 +15,10 @@
       <p class="m-2 text-xl leading-none font-bold"><%= current_user.follow_count %> <br> <span class="font-bold text-base text-gray-600">Following</span></p>
     </div>
   </div>
-      <div class="flex flex-col text-justify items-start justify-between h-48 font-bold mt-5 uppercase">
-        <%= link_to "Home", :root, class: "p-5" %>
-        <%= link_to "Profile", current_user, class: "p-5" %>
-        <%= link_to "Log out", logout_path, method: :delete, class: "p-5" %>
+      <div class="flex flex-col items-center items-start justify-between h-48 font-bold mt-5 uppercase">
+        <%= link_to "Home", :root, class: "p-5 hover:text-gray-400" %>
+        <%= link_to "Profile", current_user, class: "p-5 hover:text-gray-400" %>
+        <%= link_to "Log out", logout_path, method: :delete, class: "p-5 hover:text-gray-400" %>
       </div>
   </div>      
 <% end %>

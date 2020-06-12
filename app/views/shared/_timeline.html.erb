@@ -1,14 +1,18 @@
 <% @timeline.each do |post| %>
-    <div class=" m-5 shadow-lg rounded-lg hover:shadow-2xl bg-gray-100 flex p-4">
-      <div class="img-box w-24 h-32">
-        <% if post.user.photo.attached? %>
-          <%= image_tag(post.user.photo, class: "rounded-full mx-auto h-20 w-20")%>
-        <% end %>
-      </div>
-      <div class=" p-4 text w-11/12 text-justify flex flex-col">
-        <span class=" font-bold"> <%= post.user.full_name %> </span>
-        <p class="text-sm text-gray-600"> <%= post.body %> </p>
-      </div>
+  <div class=" m-5 shadow-lg text-gray-600 rounded-lg hover:shadow-2xl bg-gray-100 flex p-4">
+    <div class="img-box w-24 h-32">
+      <% if post.user.photo.attached? %>
+        <%= image_tag(post.user.photo, class: "rounded-full mx-auto h-20 w-20")%>
+      <% end %>
     </div>
+    <div class=" p-4  w-11/12 text-justify flex flex-col">
+      <span class=" font-bold text-gray-900"> <%= post.user.full_name %> </span>
+      <p class="text-sm"> <%= post.body %> </p>
+    </div>
+    <small class="text-xs self-end whitespace-no-wrap">
+      <%= distance_of_time_in_words_to_now(post.created_at) %> 
+    </small>
+  </div>
 <% end %>
+      
 
