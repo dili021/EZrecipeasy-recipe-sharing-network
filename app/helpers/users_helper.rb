@@ -14,4 +14,8 @@ module UsersHelper
       render 'shared/img_upload'
     end
   end
+
+  def follow_status(user)
+    'followed' if current_user.followed?(user) 
+  end
 end

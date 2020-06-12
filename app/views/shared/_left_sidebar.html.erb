@@ -5,7 +5,9 @@
       <% if current_user.photo.attached? %>
         <%= image_tag(current_user.photo, class: "w-12 rounded-full") %>
       <% end %>
-        <span class="p-1 text-base font-bold text-gray-600 uppercase text-justify"><%= current_user.full_name %></span>
+        <span class="p-1 text-base font-bold text-gray-600 uppercase text-justify">
+          <%= current_user.full_name %>
+        </span>
 
     </div>
     <div class="follows text-sm text-center text-gray-200 flex mt-4 justify-around">

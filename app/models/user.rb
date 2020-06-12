@@ -39,7 +39,6 @@ class User < ApplicationRecord
                     uniqueness: {case_sensitive: false}
  
   scope :other_users,        ->(user) { where.not(id: user.id)}
-  scope :not_followed_users, -> { where.not(follower_id: user.id)}
 
   def my_timeline
     followed_user_ids = "SELECT followed_id FROM followings

@@ -11,7 +11,12 @@
           <%= image_tag(person.photo, class: "w-16 rounded-full") %>
         <% end %>
       </div>
-        <%= person.full_name %>
+      <div class="person-info">
+        <p><%= person.full_name %></p>
+        <small class="text-gray-500">
+          <%= follow_status(person) %>
+        </small>
+      </div>
     </div>
   <% end %>  
 <% end %>
