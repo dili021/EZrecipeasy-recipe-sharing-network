@@ -25,6 +25,7 @@
 <%= user_photo_upload(current_user)%>
 
 <%# Follower list %>
+<p class="m-2 text-gray-500 underline font-bold text-sm uppercase">Followers</p>
 <% @user.following_users.each do |person| %>
   <%= link_to user_path(person) do %>
     <div class="person-box hover:shadow-2xl w-full text-gray-700 
