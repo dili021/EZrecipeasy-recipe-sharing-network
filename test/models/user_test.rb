@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+RSpec.describe User, type: :model do
+  context 'validations' do
+    let :user { FactoryBot.build }
+  end
 end
