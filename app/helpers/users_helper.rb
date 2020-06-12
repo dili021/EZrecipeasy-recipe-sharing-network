@@ -1,21 +1,19 @@
 module UsersHelper
-
   def follow_actions(user)
     return if current_user?(user)
-    unless current_user.followed?(user)
-      render 'shared/follow_button'
-    else
+
+    if current_user.followed?(user)
       render 'shared/unfollow_button'
+    else
+      render 'shared/follow_button'
     end
   end
 
   def user_photo_upload(user)
-    if user == @user
-      render 'shared/img_upload'
-    end
+    render 'shared/img_upload' if user == @user
   end
 
   def follow_status(user)
-    'followed' if current_user.followed?(user) 
+    'followed' if current_user.followed?(user)
   end
 end

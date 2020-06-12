@@ -1,44 +1,43 @@
 class User < ApplicationRecord
-  before_save { self.full_name = full_name.titleize}
-  before_save {self.email = email.downcase}
+  before_save { self.full_name = full_name.titleize }
+  before_save { self.email = email.downcase }
 
-  VALID_IMAGE_REGEX = /\.(jpe?g|jpg|png)$/
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  VALID_IMAGE_REGEX = /\.(jpe?g|jpg|png)$/.freeze
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
 
   has_one_attached :photo
   has_one_attached :cover_image
-  
-  validates :photo, content_type: [:png, :jpg, :jpeg]
-  validates :cover_image, content_type: [:png, :jpg, :jpeg]
-                     
+
+  validates :photo, content_type: %i[png jpg jpeg]
+  validates :cover_image, content_type: %i[png jpg jpeg]
 
   has_many :posts, dependent: :destroy
-  
-  has_many :outward_follows, class_name: "Following", 
-                             foreign_key: :follower_id, 
+
+  has_many :outward_follows, class_name: 'Following',
+                             foreign_key: :follower_id,
                              dependent: :destroy
-            
+
   has_many :followed_users, through: :outward_follows,
                             source: :followed
-            
-  has_many :inward_follows, class_name: "Following",
-                            foreign_key: :followed_id,
-                            dependent: :destroy          
 
-  has_many :following_users, through: :inward_follows, 
+  has_many :inward_follows, class_name: 'Following',
+                            foreign_key: :followed_id,
+                            dependent: :destroy
+
+  has_many :following_users, through: :inward_follows,
                              source: :follower
-  
-  validates :username, presence: true, 
-                       uniqueness: { case_sensitive: false }, 
-                       length: {minimum: 5, maximum: 20}
-  validates :full_name, presence: true, 
-                        length: {minimum: 4, maximum: 200}
+
+  validates :username, presence: true,
+                       uniqueness: { case_sensitive: false },
+                       length: { minimum: 5, maximum: 20 }
+  validates :full_name, presence: true,
+                        length: { minimum: 4, maximum: 200 }
 
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: {case_sensitive: false}
- 
-  scope :other_users, ->(user) { where.not(id: user.id)}
+                    uniqueness: { case_sensitive: false }
+
+  scope :other_users, ->(user) { where.not(id: user.id) }
 
   def my_timeline
     followed_user_ids = "SELECT followed_id FROM followings
@@ -49,17 +48,18 @@ class User < ApplicationRecord
 
   def post_count
     posts.count
-  end                  
-  
+  end
+
   def follow(target_user)
     return if followed?(target_user)
+
     followed_users << target_user
   end
-  
+
   def unfollow(target_user)
     followed_users.delete(target_user)
   end
-  
+
   def followed?(target_user)
     followed_users.include?(target_user)
   end
@@ -75,5 +75,4 @@ class User < ApplicationRecord
   def follower_count
     following_users.count
   end
-
 end

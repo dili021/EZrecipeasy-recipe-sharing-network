@@ -1,11 +1,10 @@
 module SessionsHelper
-
   def log_in(user)
     session[:user_id] = user.id
   end
 
   def current_user
-      @current_user ||= User.find_by(id: session[:user_id])
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
   def current_user?(user)
@@ -14,6 +13,7 @@ module SessionsHelper
 
   def authenticate_user
     return if user_logged_in?
+
     redirect_to login_path
   end
 

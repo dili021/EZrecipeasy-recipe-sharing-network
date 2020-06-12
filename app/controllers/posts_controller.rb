@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     @people = User.other_users(current_user)
   end
 
-
   def create
     @post = @current_user.posts.create(post_params)
     redirect_to :root
