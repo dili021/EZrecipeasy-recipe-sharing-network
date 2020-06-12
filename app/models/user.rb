@@ -38,11 +38,11 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: {case_sensitive: false}
  
-  scope :other_users,        ->(user) { where.not(id: user.id)}
+  scope :other_users, ->(user) { where.not(id: user.id)}
 
   def my_timeline
     followed_user_ids = "SELECT followed_id FROM followings
-                         WHERE follower_id = user_id"
+                         WHERE followed_id = user_id"
     Post.where("user_id IN (#{followed_user_ids})
                OR user_id = :user_id", user_id: id)
   end
