@@ -13,8 +13,8 @@ development:
   <<: *default
   database: MyDatabase_dev
   host: localhost
-  username: <%= ENV['PG_USERNAME'] %>
-  password: <%= ENV['PG_PASSWORD'] %>
+  username: postgres
+  password: MyPassword
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,12 +24,12 @@ test:
   database: MyDatabase_test
   host: localhost
   pool: 5
-  username: <%= ENV['PG_USERNAME'] %>
-  password: <%= ENV['PG_PASSWORD'] %>
+  username: postgres
+  password: MyPassword
 
 production:
   <<: *default
   database: MyDatabase_production
-  username: <%= ENV['PG_USERNAME'] %>
-  password: <%= ENV['PG_PASSWORD'] %>
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 
