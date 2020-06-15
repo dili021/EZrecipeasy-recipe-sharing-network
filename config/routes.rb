@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root                     'posts#index'
-  post   '/',          to: 'posts#create'  
+  root                     'recipes#index'
+  post   '/',          to: 'recipes#create'  
   
   get    '/sign_up',   to: 'users#new'
   
@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   delete '/follows',   to: 'follows#unfollow_user'
 
   resources :users
-  resources :posts, only: [:create, :destroy]
+  resources :recipes, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -6,13 +6,16 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @people = @user.following_users.includes(:photo_attachment)
-    @timeline = @user.posts.includes(:author)
+    @timeline =       @user.recipes.includes(:author)
+                                   .includes(:ingredients_recipes)
+                                   .includes(:ingredients)
+                                   .includes(ingredients_recipes: [:ingredient])
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome #{@user.full_name}"
+      flash[:notice] = "Welcome #{@user.full_name}"
       log_in @user
       redirect_to :root
     else

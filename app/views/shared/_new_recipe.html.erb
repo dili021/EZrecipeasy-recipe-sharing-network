@@ -1,0 +1,30 @@
+<%= form_with(model: @recipe, local: true,
+                                class: "flex text-center 
+                                      text-blue-500 
+                                      flex-col m-5
+                                      w-5/6 mx-auto
+                                      text-2xl
+                                      rounded-lg") do |f| %>
+    
+    <%= f.label :title, hidden: true%>
+    <%= f.text_field :title, placeholder: 'recipe name',
+                             class: "text-center 
+                                     bg-gray-300 
+                                     rounded mb-3" %>
+                           
+
+    <%= f.label :description, hidden: true %>
+    <%= f.text_area :description, placeholder: "Recipe directions",
+                                  class: "text-center p-10 
+                                          bg-gray-300 
+                                          rounded mb-3" %>
+    
+    <%= f.label :ingredient_tags, hidden: true%>
+    <%= f.text_field :ingredient_tags, placeholder: 'Please write a space-separated ingredient list here',
+                                       class: 'text-center bg-gray-300 rounded mb-3'%>
+
+    <%= f.submit 'Post', class: "px-3 py-2 justify-center shadow-lg 
+                                 rounded bg-blue-500 
+                                 hover:bg-blue-700 text-white" %>
+  <% end %>
+  

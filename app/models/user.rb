@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :photo, content_type: %i[png jpg jpeg]
   validates :cover_image, content_type: %i[png jpg jpeg]
 
-  has_many :posts, foreign_key: :author_id, dependent: :destroy
+  has_many :recipes, foreign_key: :author_id, dependent: :destroy
 
   has_many :outward_follows, class_name: 'Following',
                              foreign_key: :follower_id,
@@ -37,17 +37,17 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-  scope :other_users, ->(user) { where.not(id: user.id) }
+  scope :other_users, ->(user) { where.not(id: user.id)}
 
   def my_timeline
     followed_user_ids = []
     followed_users.each {|user| followed_user_ids << user.id }
-    Post.where(author_id: followed_user_ids + [id])
+    Recipe.where(author_id: followed_user_ids + [id])
     
   end
 
   def post_count
-    posts.count
+    recipes.count
   end
 
   def follow(target_user)

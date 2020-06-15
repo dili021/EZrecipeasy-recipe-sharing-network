@@ -15,7 +15,7 @@
   <% if flash.any? %>
     <ul class=" bg-blue-500 text-gray-200 font-bold text-center p-3">
       <% flash.each do |msg_type, msg|%>
-        <li><%= msg %></li>
+        <li class="#{msg_type}"><%= msg %></li>
       <% end %>
     </ul>
   <% end %>

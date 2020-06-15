@@ -1,17 +1,22 @@
-<% @timeline.each do |post| %>
+<% @timeline.each do |recipe| %>
   <div class=" m-5 shadow-lg text-gray-600 rounded-lg hover:shadow-2xl bg-gray-100 flex p-4">
     <div class="img-box w-24 h-32">
-      <% if post.author.photo.attached? %>
-        <%= image_tag(post.author.photo, class: "rounded-full mx-auto h-20 w-20")%>
+      <% if recipe.author.photo.attached? %>
+        <%= image_tag(recipe.author.photo, class: "rounded-full mx-auto h-20 w-20")%>
       <% end %>
     </div>
     <div class=" p-4  w-11/12 text-justify flex flex-col">
-      <span class=" font-bold text-gray-900"> <%= post.author.full_name %> </span>
-      <p class="text-sm"> <%= post.body %> </p>
+      <span class=" font-bold text-gray-900"> <%= recipe.author.full_name %> </span>
+      <p class="text-sm"> <%= recipe.description %> </p>
     </div>
     <small class="text-xs self-end whitespace-no-wrap">
-      <%= distance_of_time_in_words_to_now(post.created_at) %> 
+      <%= distance_of_time_in_words_to_now(recipe.created_at) %> 
     </small>
+    <ul class="flex">
+    <% recipe.ingredient_tags.each do |tag|%>
+    <li class="m-1"><%= tag %></li>    
+    <% end %>
+    </ul>
   </div>
 <% end %>
       
