@@ -7,6 +7,6 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'associations' do
-    it { should belong_to(:user) }
+    it { should belong_to(:author) }
   end
 end

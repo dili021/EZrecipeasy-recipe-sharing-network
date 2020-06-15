@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @people = @user.following_users.includes(:photo_attachment)
-    @timeline = @user.posts
+    @timeline = @user.posts.includes(:author)
   end
 
   def create

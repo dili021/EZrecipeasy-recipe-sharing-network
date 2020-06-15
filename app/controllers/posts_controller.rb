@@ -4,8 +4,7 @@ class PostsController < ApplicationController
   def index
     @user = current_user
     @post = Post.new
-    @posts = Post.all.includes([:photo_attachment])
-    @timeline = current_user.my_timeline.includes( user: [:photo_attachment])
+    @timeline = current_user.my_timeline.includes( author: [:photo_attachment])
     @people = User.other_users(current_user).includes([:photo_attachment])
   end
 

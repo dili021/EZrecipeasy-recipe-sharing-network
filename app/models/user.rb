@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :photo, content_type: %i[png jpg jpeg]
   validates :cover_image, content_type: %i[png jpg jpeg]
 
-  has_many :posts, dependent: :destroy
+  has_many :posts, foreign_key: :author_id, dependent: :destroy
 
   has_many :outward_follows, class_name: 'Following',
                              foreign_key: :follower_id,
@@ -42,7 +42,8 @@ class User < ApplicationRecord
   def my_timeline
     followed_user_ids = []
     followed_users.each {|user| followed_user_ids << user.id }
-    Post.where(user_id: followed_user_ids + [id])
+    Post.where(author_id: followed_user_ids + [id])
+    
   end
 
   def post_count
