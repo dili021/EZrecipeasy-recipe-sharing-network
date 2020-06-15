@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @people = User.other_users(current_user)
     @user = User.find(params[:id])
-    @timeline = @user.posts.all.order('created_at DESC')
+    @people = @user.following_users.includes(:photo_attachment)
+    @timeline = @user.posts
   end
 
   def create
@@ -34,8 +34,4 @@ class UsersController < ApplicationController
                                  :photo,
                                  :cover_image)
   end
-
-  #   def update_params
-  #     params.require(:user).permit(:photo, :cover_image)
-  #   end
 end

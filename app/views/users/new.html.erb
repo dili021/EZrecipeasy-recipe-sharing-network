@@ -1,7 +1,7 @@
-<div class="form bg-white shadow-lg rounded-lg mx-auto my-20 text-center items-center justify-center flex flex-col h-64 w-64">
+<div class="form bg-white shadow-lg rounded-lg mx-auto my-20 text-center items-center justify-center flex flex-col p-4 w-64">
 
   <%= form_with(model: @user, local: true, class: "flex flex-col") do |f| %>
-    
+    <%= render 'shared/errors', object: f.object %>
     
     <%= f.label :username, hidden: true %>
     <%= f.text_field :username, 
@@ -26,3 +26,4 @@
   <%= link_to "Log In", login_path, class: "font-bold text-green-700" %> 
 <%= notice%>
 </div>
+    

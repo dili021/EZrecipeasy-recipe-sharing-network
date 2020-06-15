@@ -12,11 +12,18 @@
   </head>
 
   <body>
+  <% if flash.any? %>
+    <ul class=" bg-blue-500 text-gray-200 font-bold text-center p-3">
+      <% flash.each do |msg_type, msg|%>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
     <div class="wrapper bg-gray-200 min-h-screen text-center w-screen">
-      <div class="flex  w-screen">
+      <div class="flex w-screen">
         <%= render 'shared/left_sidebar'%>
         <%= yield %>
-      </div>
+      </div>    
     </div>
   </body>
 </html>

@@ -4,13 +4,20 @@ class PostsController < ApplicationController
   def index
     @user = current_user
     @post = Post.new
-    @timeline = current_user.my_timeline
-    @people = User.other_users(current_user)
+    @posts = Post.all.includes([:photo_attachment])
+    @timeline = current_user.my_timeline.includes( user: [:photo_attachment])
+    @people = User.other_users(current_user).includes([:photo_attachment])
   end
 
   def create
     @post = @current_user.posts.create(post_params)
-    redirect_to :root
+    if @post.save
+      redirect_to :root
+    else
+      flash[:notice] = 'Empty post is not allowed'
+      redirect_to :root
+
+    end
   end
 
   private

@@ -7,16 +7,22 @@
     <small class="text-gray-700"><%= @user.username %></small>
   </p>
 </div>
-<div class="info text-center flex">
-  <p class="p-3 font-bold">
-      <%= @user.post_count %> <br> <span class="uppercase text-gray-400"> Posts</span>
-  </p>
-  <p class="p-3 font-bold">
-      <%= @user.follow_count %> <br> <span class="uppercase text-gray-400"> Following</span>
-  </p>
-  <p class="p-3 font-bold">
-      <%= @user.follower_count %> <br> <span class="uppercase text-gray-400"> Followers</span>
-  </p>
+<div class="info text-center justify-evenly justify-center flex">
+  <div class="count-box flex-1 ">
+    <p class="p-3 text-gray-700 font-bold">
+      <%= @user.post_count %> <br> <span class="uppercase text-xs text-gray-400"> Posts</span>
+    </p>
+  </div>
+  <div class="count-box flex-1 ">
+    <p class="p-3 text-gray-700 font-bold">
+      <%= @user.follow_count %> <br> <span class="uppercase text-xs text-gray-400"> Following</span>
+    </p>
+  </div>
+  <div class="count-box flex-1 ">
+    <p class="p-3 text-gray-700 font-bold">
+      <%= @user.follower_count %> <br> <span class="uppercase text-xs text-gray-400"> Followers</span>
+    </p>
+  </div>
 </div>
 <div class="button flex justify-center">
   <%= follow_actions(@user) %>
@@ -26,10 +32,10 @@
 
 <%# Follower list %>
 <p class="m-2 text-gray-500 underline font-bold text-sm uppercase">Followers</p>
-<% @user.following_users.each do |person| %>
+<% @people.each do |person| %>
   <%= link_to user_path(person) do %>
     <div class="person-box hover:shadow-2xl w-full text-gray-700 
-                font-bold shadow-lg rounded-lg flex px-10 py-3 m-3 
+                font-bold shadow-lg rounded-lg flex px-10 py-3 my-3 
                 h-24  items-center justify-center">
       <div class="img-box w-32">
         <% if person.photo.attached? %>
