@@ -37,12 +37,12 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-  scope :other_users, ->(user) { where.not(id: user.id)}
+  scope :other_users, ->(user) { where.not(id: user.id) }
 
   def my_timeline
     followed_user_ids = []
-    followed_users.each {|user| followed_user_ids << user.id }
-    Recipe.where(author: followed_user_ids + [id])    
+    followed_users.each { |user| followed_user_ids << user.id }
+    Recipe.where(author: followed_user_ids + [id])
   end
 
   def post_count

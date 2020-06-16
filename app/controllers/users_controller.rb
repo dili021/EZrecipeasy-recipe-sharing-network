@@ -6,10 +6,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @people = @user.following_users.includes(:photo_attachment)
-    @timeline =       @user.recipes.includes(:author)
-                                   .includes(:ingredients_recipes)
-                                   .includes(:ingredients)
-                                   .includes(ingredients_recipes: [:ingredient])
+    @timeline = @user.recipes.includes(:author)
+      .includes(:ingredients_recipes)
+      .includes(:ingredients)
+      .includes(ingredients_recipes: [:ingredient])
   end
 
   def create

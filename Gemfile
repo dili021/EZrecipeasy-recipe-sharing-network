@@ -23,11 +23,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'active_storage_validations'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-gem 'gravatar_image_tag', '~> 1.2'
-gem 'tailwindcss'
 gem 'bcrypt', '~> 3.1.7'
+gem 'gravatar_image_tag', '~> 1.2'
 gem 'ransack', github: 'activerecord-hackery/ransack'
-
+gem 'tailwindcss'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -42,8 +41,8 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'bullet'
   gem 'better_errors'
+  gem 'bullet'
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
