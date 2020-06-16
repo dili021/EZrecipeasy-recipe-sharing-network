@@ -42,8 +42,7 @@ class User < ApplicationRecord
   def my_timeline
     followed_user_ids = []
     followed_users.each {|user| followed_user_ids << user.id }
-    Recipe.where(author_id: followed_user_ids + [id])
-    
+    Recipe.where(author: followed_user_ids + [id])    
   end
 
   def post_count

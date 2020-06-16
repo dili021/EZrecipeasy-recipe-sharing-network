@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:posts) }
+    it { should have_many(:recipes) }
     it { should have_many(:outward_follows) }
     it { should have_many(:inward_follows) }
     it { should have_many(:following_users) }

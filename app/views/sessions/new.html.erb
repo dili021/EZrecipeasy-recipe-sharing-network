@@ -1,10 +1,9 @@
-
-<div class="form bg-white mx-auto my-20 rounded-lg shadow-xl text-center items-center justify-center flex flex-col h-64 w-64">
+<div class="mx-auto">
+  <div class="form bg-white mx-auto my-20 rounded-lg shadow-2xl text-center items-center justify-center flex flex-col h-64 w-64">
     <%= form_with(url: login_path, 
                   scope: :session, 
                   local: true,
                   class: "flex flex-col") do |f| %>
-
       <%= f.label :username, 
                    placeholder: "username", 
                    hidden: true%>
@@ -12,10 +11,11 @@
                         autofocus: true, 
                         placeholder: "Username",
                         class: "my-3 shadow-lg"%>
-      
       <%= f.submit "Log In", class: "bg-blue-300 p-3 shadow-lg w-auto rounded hover:bg-blue-500" %>
     <% end %>
-  <p class="mt-4">Don't have an account? <br> 
-    <%= link_to "Sign up now!", sign_up_path, class: "font-bold text-green-700" %> 
-  </p>
+    <p class="mt-4">Don't have an account? <br>
+      <%= link_to "Sign up now!", sign_up_path, class: "font-bold text-green-700" %>
+    </p>
+  </div>
+  <%= image_tag("logo_text.png")%>
 </div>

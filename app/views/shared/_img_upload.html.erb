@@ -1,12 +1,8 @@
-
 <%= form_with(model: current_user,
               class: "flex flex-col justify-around") do |f| %>
-  
   <%= f.label :photo, "Choose profile picture", class: "bg-gray-600 justify-center hover:bg-blue-500 flex shadow-md p-3 mb-3 items-center rounded-lg" %>
-      <%= f.file_field :photo, hidden: true %>
-    
-  
+  <%= f.file_field :photo, hidden: true %>
   <%= f.label :cover_image, "Choose cover image", class: "bg-gray-600 justify-center hover:bg-blue-500 flex shadow-md mb-3 p-3 items-center rounded-lg" %>
   <%= f.file_field :cover_image, hidden: true %>
-    <%= f.submit 'Upload', class: "rounded-lg hover:bg-green-400 shadow-lg text-sm p-1"%>
+  <%= f.submit 'Upload', class: "rounded-lg hover:bg-green-400 shadow-lg text-sm p-1"%>
 <% end %>

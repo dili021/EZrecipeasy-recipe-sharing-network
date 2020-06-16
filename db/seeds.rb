@@ -28,8 +28,14 @@ followers = users[5..10]
 followers.each {|follower| follower.follow(user)}
 10.times {|i| user.follow(users.sample)}
 
-# Generate posts by users
+# Generate recipes by users
 users.each do |person|
-  post = Faker::Lorem.sentence
-  person.posts.create!(body: post)
+  title = Faker::Food.dish
+  description = Faker::Food.description
+  tags= []
+  2.times {tags << Faker::Food.ingredient}
+  tags = tags.join(" ")
+  person.recipes.create!(title: title,
+                         description: description,
+                         ingredient_tags: tags)
 end
