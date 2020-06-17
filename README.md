@@ -14,9 +14,11 @@
 
   - [Setup](#Setup)
 
-  - [TailwindCSS](#TailwindCSS)
+    - [TailwindCSS](#TailwindCSS)
 
   - [Usage](#Usage)
+
+- [Testing](#Testing)
 
 - [Author](#Author)
 
@@ -31,13 +33,15 @@
 ## About
 
 - This is the capstone project of the Ruby on Rails section at 
-[Microverse](https://microverse.org). It is a fully functional web app, 
-mimicking aspects of Twitter. 
+[Microverse](https://microverse.org). 
+- It is a fully functional web app, 
+a social network where you can share recipes, and search through them by ingredients. 
 
 ### Built with
 
 - VSCode
 - Ruby on Rails
+- AWS S3
 - TailwindCSS
 - SQLite
 - Rubocop
@@ -69,7 +73,15 @@ This is my first project using it, and I'm already in love!
 whatever is your set port.
 - Log in with username: `test_user` to have a look around, or create your own 
 account.
-- You can follow/unfollow users, create posts and see posts of followed users on your timeline, and upload a profile picture and cover image.
+- You can upload a profile picture and cover image, follow/unfollow users, <br>
+post recipes and explore them manually or by using the search bar.
+
+## Testing
+
+- Testing is done with RSpec using FactoryBot factories and Capybara for 
+integration tests. <br> to run them simply run `rspec` in your terminal while in 
+the root folder of the app.
+
 
 ## Author
 
@@ -93,4 +105,9 @@ in mind please visit the
 This project is [MIT](https://opensource.org/licenses/MIT) licensed.
 
 ## Gallery
+
+![image](https://user-images.githubusercontent.com/55356496/84882289-4c970900-b08f-11ea-99aa-8852c92809ac.png) <br><br>
+![image](https://user-images.githubusercontent.com/55356496/84881539-4ce2d480-b08e-11ea-904f-340af8db0bdb.png) <br><br>
+![image](https://user-images.githubusercontent.com/55356496/84882165-21acb500-b08f-11ea-8a75-015be3591c93.png) <br><br>
+![image](https://user-images.githubusercontent.com/55356496/84882212-34bf8500-b08f-11ea-870e-41d198f427df.png)
 

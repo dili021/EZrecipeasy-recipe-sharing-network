@@ -1,7 +1,9 @@
 <%= provide(:title, @user.full_name) %>
 <div class=" flex w-full flex-col">
   <% if @user.cover_image.attached? %>
-    <%= image_tag(@user.cover_image, class: "h-56 object-cover shadow-xl mb-4") %>
+    <%= image_tag(@user.cover_image, class: "h-56 object-cover 
+                                             object-center
+                                             shadow-xl mb-4") %>
   <% end %>
   <div class="w-4/5 mx-auto">
     <%= render 'shared/timeline'%>

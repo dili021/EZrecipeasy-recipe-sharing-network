@@ -5,7 +5,11 @@
       <div class="img-box w-24 h-32">
         <% if recipe.author.photo.attached? %>
           <%= image_tag(recipe.author.photo, 
-                        class: "rounded-full mx-auto mb-2 h-20 w-20")%>
+                        class: "rounded-full
+                                mx-auto mb-2 
+                                h-20 w-20
+                                object-cover
+                                object-center")%>
         <% end %>
         <span class="font-bold text-gray-900">
           <%= recipe.author.full_name %>

@@ -3,7 +3,10 @@
     <div class="user-profile flex-col justify-around flex h-56 bg-gray-900  h-32">
       <div class="avatar text-2xl px-3 py-2 justify-between items-center flex">
         <% if current_user.photo.attached? %>
-          <%= image_tag(current_user.photo, class: "w-12 rounded-full") %>
+          <%= image_tag(current_user.photo, class: "w-12 h-12
+                                                    rounded-full
+                                                    object-cover
+                                                    object-center") %>
         <% end %>
         <span class="p-1 text-base font-bold text-gray-600 uppercase text-justify">
           <%= current_user.full_name %>
