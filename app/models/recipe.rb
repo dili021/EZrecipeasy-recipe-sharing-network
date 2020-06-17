@@ -17,7 +17,7 @@ class Recipe < ApplicationRecord
 
   def ingredient_tags=(tags)
     self.ingredients = tags.split(' ').map do |tag|
-      Ingredient.where(title: tag).first_or_create
+      Ingredient.find_or_create_by(title: tag)
     end
   end
 end
