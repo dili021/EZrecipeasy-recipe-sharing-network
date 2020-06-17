@@ -50,7 +50,6 @@ class User < ApplicationRecord
 
   def follow(target_user)
     return if followed?(target_user) || target_user == @current_user
-
     followed_users << target_user
   end
 
