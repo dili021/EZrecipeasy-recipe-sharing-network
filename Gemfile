@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'gravatar_image_tag', '~> 1.2'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'tailwindcss'
+gem 'faker'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -37,7 +38,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 5.2'
-  gem 'faker'
   gem 'sqlite3', '~> 1.4'
 end
 
