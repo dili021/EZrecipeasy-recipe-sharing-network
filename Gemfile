@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'active_storage_validations'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'aws-sdk-rails', '~> 3'
+gem 'aws-sdk-s3', '~> 1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'gravatar_image_tag', '~> 1.2'
 gem 'ransack', github: 'activerecord-hackery/ransack'
