@@ -2,7 +2,6 @@ class User < ApplicationRecord
   before_save { self.full_name = full_name.titleize }
   before_save { self.email = email.downcase }
 
-  VALID_IMAGE_REGEX = /\.(jpe?g|jpg|png)$/.freeze
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
 
   has_one_attached :photo
@@ -50,8 +49,7 @@ class User < ApplicationRecord
   end
 
   def follow(target_user)
-    return if followed?(target_user)
-
+    return if followed?(target_user) || target_user == current_user
     followed_users << target_user
   end
 
