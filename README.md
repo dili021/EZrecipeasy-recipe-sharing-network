@@ -8,6 +8,8 @@
 - [About](#About)
 
 
+- [Try it out](#Try-it-out)
+
 - [Built with](#Built-with)
 
 - [Getting started](#Getting-started)
@@ -36,8 +38,13 @@
 [Microverse](https://microverse.org). 
 - It is a fully functional web app, 
 a social network where you can share recipes, and search through them by ingredients. 
+- <strong>It's purpose</strong> is implementing what we have previously learned throughout the Ruby on Rails section, i.e. proper use of ActiveRecord, model associations and validations, creating sessions and authentication, using embedded ruby, logic delegation to helpers, scopes, n+1 querry problems, and unit and integration testing. 
 
-### Built with
+## Try it out
+
+- To try it out visit this [live demo link](http://ezrecipeasy.herokuapp.com). <br> You can log in with username `test_user`, or create an account.
+
+## Built with
 
 - VSCode
 - Ruby on Rails
