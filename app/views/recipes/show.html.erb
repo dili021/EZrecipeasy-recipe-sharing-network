@@ -1,0 +1,42 @@
+<div class="m-5 shadow-lg text-gray-600 rounded-lg flex-wrap 
+              hover:shadow-2xl bg-gray-100 flex p-4">
+  <div class="img-and-text w-full flex">
+    <div class="img-box w-24 h-32">
+      <% if @recipe.author.photo.attached? %>
+        <%= image_tag(@recipe.author.photo, 
+                        class: "rounded-full
+                                mx-auto mb-2 
+                                h-20 w-20
+                                object-cover
+                                object-center")%>
+      <% end %>
+      <span class="font-bold text-gray-900">
+        <%= @recipe.author.full_name %>
+      </span>
+    </div>
+    <div class=" p-4 w-11/12 text-justify flex flex-col">
+      <h2 class="font-bold text-2xl mb-4 text-center text-gray-900">
+        <%= @recipe.title %>
+      </h2>
+      <p class="text-2xl mx-auto w-2/3">
+        <%= @recipe.description %>
+      </p>
+    </div>
+  </div>
+  <div class="likes items-center justify-between w-full flex">
+    <span class=" font-bold"><%= pluralize(@recipe.likes.count, 'like')%></span>
+    <div id="likes">
+      <%= render partial: 'likes'%>
+    </div>
+  </div>
+  <div class="time-and-tags flex w-full justify-between">
+    <small class="text-xs self-end whitespace-no-wrap">
+      <%= distance_of_time_in_words_to_now(@recipe.created_at) %>
+    </small>
+    <ul class="flex items-center flex-wrap">
+      <% @recipe.ingredient_tags.each do |tag|%>
+        <li class="m-1 rounded-full  px-3 text-xs bg-gray-300 border-gray-400 border-2"><%= tag %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

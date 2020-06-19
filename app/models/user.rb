@@ -73,4 +73,8 @@ class User < ApplicationRecord
   def follower_count
     following_users.count
   end
+
+  def liked?(recipe)
+    recipe.likes.where(user_id: id).any?
+  end
 end

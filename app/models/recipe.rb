@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :author, class_name: 'User'
 
+  has_many :likes
   has_many :ingredients_recipes
   has_many :ingredients, through: :ingredients_recipes,
                          source: :ingredient
@@ -16,7 +17,7 @@ class Recipe < ApplicationRecord
   end
 
   def ingredient_tags=(tags)
-    self.ingredients = tags.split(' ').map do |tag|
+    self.ingredients = tags.split(',').map do |tag|
       Ingredient.find_or_create_by(title: tag)
     end
   end

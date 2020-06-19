@@ -12,6 +12,10 @@ class RecipesController < ApplicationController
       .includes(ingredients_recipes: [:ingredient])
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
+
   def create
     @recipe = @current_user.recipes.create(recipe_params)
     flash[:notice] = 'Empty post is not allowed' unless @recipe.save
