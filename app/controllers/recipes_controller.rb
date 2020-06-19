@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user
+  before_action :set_recipe, only: %i[show update destroy]
 
   def index
     @user = current_user
@@ -12,13 +12,22 @@ class RecipesController < ApplicationController
       .includes(ingredients_recipes: [:ingredient])
   end
 
-  def show
-    @recipe = Recipe.find(params[:id])
-  end
+  def show; end
 
   def create
     @recipe = @current_user.recipes.create(recipe_params)
     flash[:notice] = 'Empty post is not allowed' unless @recipe.save
+    redirect_to :root
+  end
+
+  def update 
+    @recipe.update(recipe_params)
+    redirect_to @recipe
+  end
+
+  def destroy
+    @recipe.destroy
+    flash[:notice] = "Successfully deleted recipe"
     redirect_to :root
   end
 
@@ -27,6 +36,11 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:description,
                                    :title,
-                                   :ingredient_tags)
+                                   :ingredient_tags,
+                                   :photo)
+  end
+
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
   end
 end

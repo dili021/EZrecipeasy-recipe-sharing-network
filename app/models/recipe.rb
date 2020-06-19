@@ -1,11 +1,14 @@
 class Recipe < ApplicationRecord
   belongs_to :author, class_name: 'User'
 
+  has_one_attached :photo
   has_many :likes
-  has_many :ingredients_recipes
+  
+  has_many :ingredients_recipes, dependent: :destroy
   has_many :ingredients, through: :ingredients_recipes,
                          source: :ingredient
 
+  
   validates :title, presence: true
   validates :description, presence: true,
                           length: { maximum: 8000 }
