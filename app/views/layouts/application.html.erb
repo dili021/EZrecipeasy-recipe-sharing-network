@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsCapstone</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag    'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   </head>
-
   <body>
-    <%= yield %>
+    <% if flash.any? %>
+      <ul class=" bg-blue-500 text-gray-200 font-bold text-center p-3">
+        <% flash.each do |msg_type, msg|%>
+          <li class="#{msg_type}"><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div class="wrapper bg-gray-200 min-h-screen text-center w-screen">
+      <div class="flex w-screen">
+        <%= render 'shared/left_sidebar'%>
+        <%#= debug params%>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
