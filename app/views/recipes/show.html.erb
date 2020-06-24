@@ -45,9 +45,8 @@
   </div>
   <%# bottom row with tags, likes and created_at %>
   <div class="bottom w-full">
-    <div class="likes items-center justify-between mb-4 w-full flex">
-      <span class=" font-bold"><%= pluralize(@recipe.likes.count, 'like')%></span>
-      <div id="likes/delete">
+    <div class="votes items-center justify-between mb-4 w-full flex">
+      <div id="votes/delete">
         <% if @recipe.author == current_user %>
           <%= link_to 'Delete recipe', recipe_path, 
                                        method: :delete,
@@ -57,7 +56,6 @@
                                                border-2 border-red-800
                                                hover:bg-red-700" %>
         <% else %>
-          <%#= render partial: 'likes'%>
           <%= render 'votes', locales: @recipe %>
         <% end %>
       </div>

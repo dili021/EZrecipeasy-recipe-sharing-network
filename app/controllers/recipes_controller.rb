@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user
   before_action :set_recipe, only: %i[show 
                                       update 
                                       upvote 
@@ -36,6 +37,10 @@ class RecipesController < ApplicationController
 
   def downvote
     @recipe.downvote_from(current_user)
+    if @recipe.get_dislikes.size >= 10
+      @recipe.destroy
+      flash[:notice] = "Recipe deleted because of too many downvotes"
+    end
     redirect_to @recipe
   end
 

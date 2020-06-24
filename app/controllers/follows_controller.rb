@@ -1,6 +1,5 @@
 class FollowsController < ApplicationController
-  before_action :user_logged_in?
-
+  before_action :authenticate_user
   def follow_user
     @user = User.find(params[:id])
     current_user.follow(@user)

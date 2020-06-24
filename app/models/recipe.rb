@@ -25,4 +25,8 @@ class Recipe < ApplicationRecord
       Ingredient.find_or_create_by(title: tag)
     end
   end
+
+  def truncated_description
+    "#{description.split(" ").first(50).join(" ")}..." 
+  end
 end

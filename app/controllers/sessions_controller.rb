@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
-  def new; end
+  def new
+    flash[:notice] = "You're already logged in" if user_logged_in?
+    redirect_to root_path if user_logged_in?
+  end
 
   def create
     user = User.find_by(username: params[:session][:username])
