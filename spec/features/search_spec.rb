@@ -11,6 +11,7 @@ RSpec.feature 'Searches', type: :feature do
     click_on 'Log In'
     fill_in 'q[ingredients_title_cont]', with: 'broccoly'
     click_button('Search')
+    puts page.body
     expect(page).to have_content('amazing dish')
   end
 

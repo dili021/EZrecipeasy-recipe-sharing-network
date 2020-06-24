@@ -21,7 +21,7 @@ class Recipe < ApplicationRecord
   end
 
   def ingredient_tags=(tags)
-    @recipe.ingredients = tags.split(',').map do |tag|
+    self.ingredients = tags.split(',').map do |tag|
       Ingredient.find_or_create_by(title: tag)
     end
   end
