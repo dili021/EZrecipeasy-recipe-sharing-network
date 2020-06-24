@@ -1,5 +1,9 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show update destroy]
+  before_action :set_recipe, only: %i[show 
+                                      update 
+                                      upvote 
+                                      downvote 
+                                      destroy]
 
   def index
     @user = current_user
@@ -22,6 +26,16 @@ class RecipesController < ApplicationController
 
   def update 
     @recipe.update(recipe_params)
+    redirect_to @recipe
+  end
+
+  def upvote
+    @recipe.liked_by(current_user)
+    redirect_to @recipe
+  end
+
+  def downvote
+    @recipe.downvote_from(current_user)
     redirect_to @recipe
   end
 

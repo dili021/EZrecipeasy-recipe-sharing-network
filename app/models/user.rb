@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_save { self.full_name = full_name.titleize }
   before_save { self.email = email.downcase }
-
+  acts_as_voter
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
 
   has_one_attached :photo

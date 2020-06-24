@@ -1,0 +1,18 @@
+<div class="flex">
+  <div class="mx-3">
+    <p>
+      <%= link_to upvote_recipe_path, method: :put do %>
+        <svg class="w-8 fill-current text-green-400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Arrow_up" viewBox="0 0 20 20" xml:space="preserve"><path d="M10 2.5L16.5 9H13v8H7V9H3.5L10 2.5z"/></svg>
+        <%= @recipe.get_likes.size %>
+      <% end %>
+    </p>
+  </div>
+  <div class="mx-3">
+    <p>
+      <%= link_to downvote_recipe_path, method: :put do %>
+        <svg class="w-8 fill-current text-red-400" style="transform: rotate(180deg);" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Arrow_up" viewBox="0 0 20 20" xml:space="preserve"><path d="M10 2.5L16.5 9H13v8H7V9H3.5L10 2.5z"/></svg>
+        <%= @recipe.get_dislikes.size %>
+      <% end %>
+    </p>
+  </div>
+</div>

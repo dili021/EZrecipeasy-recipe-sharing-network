@@ -57,7 +57,8 @@
                                                border-2 border-red-800
                                                hover:bg-red-700" %>
         <% else %>
-          <%= render partial: 'likes'%>
+          <%#= render partial: 'likes'%>
+          <%= render 'votes', locales: @recipe %>
         <% end %>
       </div>
     </div>

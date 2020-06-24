@@ -1,5 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :author, class_name: 'User'
+  acts_as_votable
 
   has_one_attached :photo
   has_many :likes
@@ -20,7 +21,7 @@ class Recipe < ApplicationRecord
   end
 
   def ingredient_tags=(tags)
-    self.ingredients = tags.split(',').map do |tag|
+    @recipe.ingredients = tags.split(',').map do |tag|
       Ingredient.find_or_create_by(title: tag)
     end
   end
