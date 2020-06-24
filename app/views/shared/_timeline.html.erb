@@ -1,0 +1,44 @@
+<% @timeline.each do |recipe| %>
+  <%= link_to recipe do %>
+    <div class="m-5 shadow-lg text-gray-600 rounded-lg flex-wrap 
+              hover:shadow-2xl bg-gray-100 flex p-2">
+      <div class="img-and-text w-full flex">
+        <div class="img-box w-24 mb-4 h-32">
+          <% if recipe.author.photo.attached? %>
+            <%= image_tag(recipe.author.photo, 
+                        class: "rounded-full
+                                mx-auto mb-2 
+                                h-20 w-20
+                                object-cover
+                                object-center")%>
+          <% end %>
+          <span class="font-bold text-gray-900">
+            <%= recipe.author.full_name %>
+          </span>
+        </div>
+        <div class=" p-4 w-11/12 text-justify flex flex-col">
+          <h2 class="font-bold text-lg text-center text-gray-900">
+            <%= recipe.title %>
+          </h2>
+          <p class=""><%= recipe.truncated_description%></p>
+        </div>
+      </div>
+      <div class="time-and-tags flex w-full items-end justify-between">
+        <small class="text-xs self-end whitespace-no-wrap">
+          <span class="flex text-center">
+            <span><svg class="w-4 fill-current text-green-400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Arrow_up" viewBox="0 0 20 20" xml:space="preserve"><path d="M10 2.5L16.5 9H13v8H7V9H3.5L10 2.5z"/></svg>
+              <small><%= recipe.get_likes.size %></small></span>
+            <span><svg class="w-4 fill-current text-red-400" style="transform: rotate(180deg);" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Arrow_up" viewBox="0 0 20 20" xml:space="preserve"><path d="M10 2.5L16.5 9H13v8H7V9H3.5L10 2.5z"/></svg>
+              <small><%= recipe.get_dislikes.size %></small></span>
+          </span>
+          <%= distance_of_time_in_words_to_now(recipe.created_at) %>
+        </small>
+        <ul class="flex flex-wrap">
+          <% recipe.ingredient_tags.each do |tag|%>
+            <li class="m-1 rounded-full  px-3 text-xs bg-gray-300 border-gray-400 border-2"><%= tag %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+<% end %>

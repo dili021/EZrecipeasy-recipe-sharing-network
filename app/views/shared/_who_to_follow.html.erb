@@ -1,0 +1,22 @@
+<h3 class="text-gray-500 border-b-2 mb-10 border-gray-400 uppercase ">
+  Who to follow
+</h3>
+<% @people.each do |person| %>
+  <%= link_to user_path(person) do %>
+    <div class="person-box w-full text-gray-700 
+                font-bold shadow-lg rounded-lg flex px-10 py-3  
+                h-24  items-center justify-center hover:shadow-2xl">
+      <div class="img-box w-32">
+        <% if person.photo.attached? %>
+          <%= image_tag(person.photo, class: "w-16 rounded-full") %>
+        <% end %>
+      </div>
+      <div class="person-info">
+        <p><%= person.full_name %></p>
+        <small class="text-gray-500">
+          <%= follow_status(person) %>
+        </small>
+      </div>
+    </div>
+  <% end %>
+<% end %>

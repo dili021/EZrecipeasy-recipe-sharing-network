@@ -1,0 +1,16 @@
+<%= provide(:title, @user.full_name) %>
+<div class=" flex w-full flex-col">
+  <% if @user.cover_image.attached? %>
+    <%= image_tag(@user.cover_image, class: "h-56 object-cover 
+                                             object-center
+                                             shadow-xl mb-4") %>
+  <% end %>
+  <div class="w-4/5 mx-auto">
+    <%= render 'shared/timeline'%>
+  </div>
+</div>
+<div class="flex px-4 shadow-xl py-4 bg-gray-200">
+  <div class="flex-col items-center right-sidebar">
+    <%= render 'shared/profile_info'%>
+  </div>
+</div>

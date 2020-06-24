@@ -1,0 +1,54 @@
+<div class="img-and-name border-b-2 mb-3">
+  <% if @user.photo.attached? %>
+    <%= image_tag(@user.photo, class: "w-32 object-center object-cover h-32 mx-auto rounded-full") %>
+  <% end %>
+  <p class="font-bold text-center p-3">
+    <%= @user.full_name %> <br>
+    <small class="text-gray-700"><%= @user.username %></small>
+  </p>
+</div>
+<div class="info text-center justify-evenly justify-center flex">
+  <div class="count-box flex-1 ">
+    <p class="p-3 text-gray-700 font-bold">
+      <%= @user.post_count %> <br>
+      <span class="uppercase text-xs text-gray-400"> Posts</span>
+    </p>
+  </div>
+  <div class="count-box flex-1 ">
+    <p class="p-3 text-gray-700 font-bold">
+      <%= @user.follow_count %> <br>
+      <span class="uppercase text-xs text-gray-400"> Following</span>
+    </p>
+  </div>
+  <div class="count-box flex-1 ">
+    <p class="p-3 text-gray-700 font-bold">
+      <%= @user.follower_count %> <br>
+      <span class="uppercase text-xs text-gray-400"> Followers</span>
+    </p>
+  </div>
+</div>
+<div class="button flex justify-center">
+  <%= follow_actions(@user) %>
+</div>
+<%= user_photo_upload(current_user)%>
+<%# Follower list %>
+<p class="m-2 text-gray-500 underline font-bold text-sm uppercase">Followers</p>
+<% @people.each do |person| %>
+  <%= link_to user_path(person) do %>
+    <div class="person-box hover:shadow-2xl w-full text-gray-700 
+                font-bold shadow-lg rounded-lg flex px-10 py-3 my-3 
+                h-24  items-center justify-center">
+      <div class="img-box w-32">
+        <% if person.photo.attached? %>
+          <%= image_tag(person.photo, class: "w-16 h-16 rounded-full") %>
+        <% end %>
+      </div>
+      <div class="person-info">
+        <p><%= person.full_name %></p>
+        <small class="text-gray-500">
+          <%= follow_status(person) %>
+        </small>
+      </div>
+    </div>
+  <% end %>
+<% end %>
