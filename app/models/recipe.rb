@@ -4,12 +4,11 @@ class Recipe < ApplicationRecord
 
   has_one_attached :photo
   has_many :likes
-  
+
   has_many :ingredients_recipes, dependent: :destroy
   has_many :ingredients, through: :ingredients_recipes,
                          source: :ingredient
 
-  
   validates :title, presence: true
   validates :description, presence: true,
                           length: { maximum: 8000 }
@@ -27,6 +26,6 @@ class Recipe < ApplicationRecord
   end
 
   def truncated_description
-    "#{description.split(" ").first(50).join(" ")}..." 
+    "#{description.split(' ').first(50).join(' ')}..."
   end
 end

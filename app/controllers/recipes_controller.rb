@@ -1,9 +1,9 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user
-  before_action :set_recipe, only: %i[show 
-                                      update 
-                                      upvote 
-                                      downvote 
+  before_action :set_recipe, only: %i[show
+                                      update
+                                      upvote
+                                      downvote
                                       destroy]
 
   def index
@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
     redirect_to :root
   end
 
-  def update 
+  def update
     @recipe.update(recipe_params)
     redirect_to @recipe
   end
@@ -39,14 +39,14 @@ class RecipesController < ApplicationController
     @recipe.downvote_from(current_user)
     if @recipe.get_dislikes.size >= 10
       @recipe.destroy
-      flash[:notice] = "Recipe deleted because of too many downvotes"
+      flash[:notice] = 'Recipe deleted because of too many downvotes'
     end
     redirect_to @recipe
   end
 
   def destroy
     @recipe.destroy
-    flash[:notice] = "Successfully deleted recipe"
+    flash[:notice] = 'Successfully deleted recipe'
     redirect_to :root
   end
 
