@@ -50,7 +50,7 @@ a social network where you can share recipes, and search through them by ingredi
 - Ruby on Rails
 - AWS S3
 - TailwindCSS
-- SQLite
+- PostgreSQL
 - Rubocop
 - RSpec, FactoryBot, ShouldaMatchers, Capybara
 
