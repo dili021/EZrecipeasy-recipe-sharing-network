@@ -1,4 +1,4 @@
-> A twitter clone made with Ruby on Rails
+> A social network for sharing delicious recipes built with Ruby on Rails
 
 
 
@@ -25,6 +25,8 @@
 - [Author](#Author)
 
 - [Contributing](#Contributing)
+
+- [Future features](#Future-features)
 
 - [Credits](#Credits)
 
@@ -102,6 +104,11 @@ the root folder of the app.
 - Contributions, issues, and feature requests are welcome! If you have something
 in mind please visit the 
 [issues page](https://github.com/dili021/rails-capstone/issues)
+
+## Future features
+
+- A voting system for the recipes
+- New recipe notifications
 
 ## Credits
 
