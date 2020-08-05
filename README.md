@@ -1,4 +1,4 @@
-> A social network for sharing delicious recipes built with Ruby on Rails
+> A social network for sharing delicious recipes. Built with Ruby on Rails.
 
 
 
@@ -40,7 +40,7 @@
 [Microverse](https://microverse.org). 
 - It is a fully functional web app, 
 a social network where you can share recipes, and search through them by ingredients. 
-- <strong>It's purpose</strong> is implementing what we have previously learned throughout the Ruby on Rails section, i.e. proper use of ActiveRecord, model associations and validations, creating sessions and authentication, using embedded ruby, logic delegation to helpers, scopes, n+1 querry problems, and unit and integration testing. 
+- <strong>Its purpose</strong> is implementing what we have previously learned throughout the Ruby on Rails section, i.e. proper use of ActiveRecord, model associations and validations, creating sessions and authentication, using embedded ruby, logic delegation to helpers, scopes, n+1 querry problems, and unit and integration testing. 
 
 ## Try it out
 
