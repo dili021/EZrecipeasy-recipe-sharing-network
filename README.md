@@ -121,16 +121,12 @@ This project is [MIT](https://opensource.org/licenses/MIT) licensed.
 
 ## Gallery
 
-Login <br>
+#### Login <br>
 ![image](https://user-images.githubusercontent.com/55356496/89404723-be4c1480-d71a-11ea-9bba-6f67d35fc447.png)<br><br>
-Sign up <br>
-![image](https://user-images.githubusercontent.com/55356496/89404881-fce1cf00-d71a-11ea-9112-c6e7d31507a0.png)
-Homepage <br>
-![image](https://user-images.githubusercontent.com/55356496/89405026-30245e00-d71b-11ea-98c0-8988c5e69e81.png)
-Profile page <br>
+#### Sign up <br>
+![image](https://user-images.githubusercontent.com/55356496/89404881-fce1cf00-d71a-11ea-9112-c6e7d31507a0.png)<br><br>
+#### Homepage <br>
+![image](https://user-images.githubusercontent.com/55356496/89405026-30245e00-d71b-11ea-98c0-8988c5e69e81.png)<br><br>
+#### Profile page <br>
 ![image](https://user-images.githubusercontent.com/55356496/89405067-45998800-d71b-11ea-9aa5-4314570e21f5.png)
-
-
- <br><br>
-
 
