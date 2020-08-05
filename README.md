@@ -95,6 +95,7 @@ the root folder of the app.
 ## Author
 
 #### Stefan Dili
+- [Website](https://stefan-dili.tech)
 - LinkedIn: [Stefan Dili](https://www.linkedin.com/in/stefan-dili/)
 - Twitter: [@dilistefan](https://twitter.com/dilistefan)
 - Email: stefan.dili.021@gmail.com
